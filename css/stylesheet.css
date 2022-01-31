@@ -7881,7 +7881,7 @@ a {
     bottom: 0;
     margin: auto;
     width: 100%;
-    background-image: url("../img/fondo_todo3.png");
+    background-image: url("../img/fondo_todo1.png");
     background-repeat: no-repeat;
     background-size: cover;
     z-index: -1; }
@@ -7909,7 +7909,7 @@ a {
       color: var(--blanco);
       margin-bottom: 60px;
       text-align: center;
-      width: 600px; }
+      width: 450px; }
   .main__boton {
     display: flex;
     justify-content: space-around;
@@ -7959,7 +7959,8 @@ a {
 .pequeño {
   color: var(--naranja);
   font-size: 40px;
-  line-height: 30px; }
+  line-height: 30px;
+  margin-bottom: 10px; }
 
 /* Separacion de letras de titulos */
 .separacionLetras {
