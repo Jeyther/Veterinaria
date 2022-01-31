@@ -10,6 +10,7 @@
 
         font-weight: 800;
         text-align: center;
+        color: rgb(70, 70, 70);
         margin-bottom: 50px ;
 
     }
@@ -26,7 +27,7 @@
             flex-direction: column;
             justify-content: space-between;
 
-            background-image: var(--naranja_degradado);
+            background-color: var(--naranja_claro);
             border-radius: 10px;
 
             width: 300px;

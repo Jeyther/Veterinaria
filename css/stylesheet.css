@@ -7819,6 +7819,7 @@ textarea.form-control-lg {
   --azul: #0099ff;
   --naranja: #ff6600;
   --naranja_degradado: linear-gradient(0deg, #f1c999 0%, #ff6600 100%);
+  --naranja_claro: #FBB158;
   --rosa: #EDD0C8; }
 
 /* Eliminar margen en toda la pagina */
@@ -7980,7 +7981,8 @@ a {
   height: 720px;
   background-color: var(--rosa); }
   .seccion-2__titulo {
-    font-weight: 800; }
+    font-weight: 800;
+    color: #464646; }
   .seccion-2__grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -8061,7 +8063,8 @@ a {
   width: 100%;
   height: 720px; }
   .seccion-3__titulo {
-    font-weight: 800; }
+    font-weight: 800;
+    color: #464646; }
   .seccion-3__grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -8098,6 +8101,7 @@ a {
   gap: 100px;
   background-color: var(--rosa); }
   .seccion-4__titulo {
+    color: #464646;
     font-weight: 800; }
   .seccion-4__flex {
     display: flex;
@@ -8160,7 +8164,7 @@ a {
         width: 120px;
         padding: 5px 5px;
         margin: 0 auto;
-        background: #FBB158;
+        background: var(--naranja_claro);
         border-radius: 47px;
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); }
         .seccion-4__flex__elemento__boton:link {
@@ -8208,6 +8212,7 @@ a {
   .seccion-5__titulo {
     font-weight: 800;
     text-align: center;
+    color: #464646;
     margin-bottom: 50px; }
   .seccion-5__container {
     position: relative; }
@@ -8216,7 +8221,7 @@ a {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      background-image: var(--naranja_degradado);
+      background-color: var(--naranja_claro);
       border-radius: 10px;
       width: 300px;
       height: 250px;
@@ -8259,6 +8264,7 @@ a {
   padding: 50px 120px;
   background-color: var(--rosa); }
   .seccion-6__titulo {
+    color: #464646;
     font-weight: 800; }
   .seccion-6__formulario {
     width: 600px;
