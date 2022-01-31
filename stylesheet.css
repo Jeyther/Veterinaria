@@ -1,0 +1,426 @@
+/* atributos globales */
+:root {
+
+    --Rubik: 'Rubik Mono One', sans-serif;
+    --popins: 'Poppins', sans-serif;
+    --blanco: #FFF;
+    --negro: #000;
+    --naranja: #DD9292;
+
+
+}
+
+/* Eliminar margen en toda la pagina */
+* {
+
+    margin: 0;
+    padding: 0;
+
+}
+
+
+/* dar color y eliminar subrayado a todos los enlaces */
+a {
+
+    font-family: var(--popins);
+    text-decoration: none;
+    color: var(--blanco);
+
+}
+
+/* color de fondo */
+.body {
+
+    background: #EDD0C8;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1280px;
+
+}
+
+
+/* resaltar pagina seleccionada */
+.selected {
+
+    color: var(--naranja);
+
+}
+
+
+/*  --- ESTILOS HEADER ---  */
+
+.header {
+
+    position: sticky;
+    top: 0px;
+
+    background-color: #78A3A9;
+    backdrop-filter: blur(10px);
+
+    width: 100%;
+    /* border-radius: 0 0 20px 20px; */
+    padding: 10px 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    z-index: 100;
+
+}
+
+.header__logo {
+
+    width: 50px;
+}
+
+/* --- Estilos Menu ---  */
+
+.header__menu__botones {
+
+    padding: 0px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.header__menu__botones li {
+
+    list-style: none;
+    font-weight: 600;
+    margin: 0 20px;
+    font-size: 18px;
+
+}
+
+.header__menu__botones li a {
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+
+}
+
+.header__menu__botones a:hover {
+
+    color: var(--naranja);
+
+}
+
+/* --- EFECTO SUBRAYADO --- */
+.header__menu__botones>li>a::before {
+
+    content: '';
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--blanco);
+    z-index: 1;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s ease-in-out;
+
+}
+
+.header__menu__botones>li>a:hover::before {
+
+    transform: scaleX(1);
+
+}
+
+/* --- ESTILOS PAGINA PRINCIPAL --- */
+
+/* Margenes, paddings y display */
+
+.main {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    position: relative;
+
+    margin: 0;
+    width: 1320px;
+    min-height: 742.5px;
+
+}
+
+/* --- TAMAÑO DE IAMGENES ---  */
+
+.main__imagen {
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+
+    width: 1320px;
+    height: 742.5px;
+
+    background-image: url("../img/fondo_todo.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+
+
+    z-index: -1;
+
+}
+
+/* color y font de titulos */
+
+.main__texto {
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+
+    width: 720px;
+
+}
+
+.main__texto__titulo {
+
+    font-family: var(--Rubik);
+    color: var(--blanco);
+    line-height: 80px;
+    word-spacing: -20px;
+    font-size: 80px;
+    font-weight: 200;
+
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.main__texto__titulo {
+
+    text-align: center;
+    width: 600px;
+
+}
+
+/* Cambiar color/tamaño de titulo pequeño */
+.pequeño {
+
+    color: var(--naranja);
+    font-size: 40px;
+    line-height: 30px;
+
+}
+
+/* COLOR Y FONTS DE SUBTITULOS */
+.main__texto__subtitulo {
+
+    font-family: var(--popins);
+    font-size: 20px;
+    color: var(--blanco);
+
+    margin-bottom: 60px;
+
+}
+
+
+
+.main__texto__subtitulo {
+
+    text-align: center;
+    width: 600px;
+}
+
+
+
+/* Separacion de letras de titulos */
+
+.separacionLetras {
+
+    letter-spacing: -25px;
+
+}
+
+.separacionPalabras {
+
+    word-spacing: -40px;
+
+}
+
+
+
+/* BOTONES */
+
+/* margen, padding, display */
+
+.main__boton {
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    width: 200px;
+    padding: 10px 10px;
+
+    background: #FBB158;
+    border-radius: 47px;
+}
+
+.main__boton:link {
+
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 100px;
+    transition: all .2s;
+
+
+}
+
+.main__boton:link:visited {
+
+    position: absolute;
+
+}
+
+.main__boton:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    border-width: 3px;
+    border-style: solid;
+    border-color: white;
+
+
+
+}
+
+.main__boton:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+.main__boton:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.main__boton::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+}
+
+
+/* color y texto del boton*/
+.main__boton__texto {
+    color: var(--blanco);
+    font-family: var(--Rubik);
+    font-size: 20px;
+
+    word-spacing: -8px;
+    letter-spacing: -1px;
+}
+
+
+
+
+
+/* --- Estilos del Footer --- */
+.footer {
+
+    font-family: var(--popins);
+    font-weight: 200;
+
+    bottom: 0px;
+
+    background-color: #FBB158;
+    backdrop-filter: blur(10px);
+
+    width: 100%;
+    /* border-radius: 20px 20px 0 0; */
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    position: relative;
+
+    z-index: 99;
+
+}
+
+.footer__logo {
+
+    width: 100px;
+
+    position: absolute;
+    left: 20px;
+    top: 25%;
+
+}
+
+.footer__block {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.footer__navegacion {
+
+    padding: 0px;
+
+}
+
+.footer__navegacion li {
+    list-style: none;
+    margin: 0 20px;
+    font-size: 16px;
+    display: inline-block;
+
+    margin: 15px;
+
+}
+
+
+.footer__redes a {
+
+    margin: 0 15px;
+
+}
+
+.footer__redes a img {
+
+    width: 40px;
+
+}
+
+.footer__derechos {
+
+    color: var(--blanco);
+    opacity: 0.3;
+    text-align: center;
+    font-weight: 600;
+    font-size: 12px;
+
+    margin-top: 30px;
+
+}
