@@ -7973,19 +7973,19 @@ a {
 .seccion-2 {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   gap: 40px;
   padding: 50px 0;
   width: 100%;
-  height: 720px;
   background-color: var(--rosa); }
   .seccion-2__titulo {
     font-weight: 800;
     color: #464646; }
   .seccion-2__grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto auto;
     gap: 10px; }
     .seccion-2__grid__elemento {
       display: flex;
@@ -7995,8 +7995,8 @@ a {
       gap: 5px;
       background-color: white;
       border-radius: 15px;
-      width: 220px;
-      height: 150px; }
+      width: 100%;
+      height: 100px; }
       .seccion-2__grid__elemento__img {
         width: 60px;
         height: 60px; }
@@ -8006,52 +8006,121 @@ a {
         font-weight: 600;
         padding: 0px 50px;
         line-height: 15px; }
-  .seccion-2__boton {
+      .seccion-2__grid__elemento-nombre {
+        grid-column: 1 / 5;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        background-color: white;
+        border-radius: 15px;
+        width: 100%;
+        height: 100px; }
+      .seccion-2__grid__elemento__nombre, .seccion-2__grid__elemento__nombre-mascota, .seccion-2__grid__elemento__edad, .seccion-2__grid__elemento__peso, .seccion-2__grid__elemento__tamaño {
+        width: 80%;
+        height: 50%;
+        border: 2px solid var(--rosa);
+        background-color: #ffffff00;
+        font-size: 14px;
+        color: black;
+        padding: 10px 10px;
+        border-radius: 50px; }
+  .seccion-2__botones {
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 200px;
-    padding: 5px 5px;
-    background: #FBB158;
-    border-radius: 47px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); }
-    .seccion-2__boton:link {
-      text-decoration: none;
-      border-radius: 100px;
-      transition: all .2s; }
-      .seccion-2__boton:link:visited {
-        position: absolute; }
-    .seccion-2__boton:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-      border-width: 3px;
-      border-style: solid;
-      border-color: white; }
-      .seccion-2__boton:hover::after {
-        transform: scaleX(1.4) scaleY(1.6);
-        opacity: 0; }
-    .seccion-2__boton:active {
-      transform: translateY(-1px);
+    gap: 20px; }
+    .seccion-2__botones__boton {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      width: 120px;
+      padding: 5px 5px;
+      background: #FBB158;
+      border-radius: 47px;
       box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); }
-    .seccion-2__boton::after {
-      content: "";
-      display: inline-block;
-      height: 100%;
-      width: 100%;
-      border-radius: 100px;
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: -1;
-      transition: all .4s; }
-    .seccion-2__boton__texto {
-      color: var(--blanco);
-      font-family: var(--popins);
+      .seccion-2__botones__boton-reiniciar {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 120px;
+        padding: 5px 5px;
+        background: red;
+        border-radius: 47px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); }
+      .seccion-2__botones__boton-agregar {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 180px;
+        padding: 5px 5px;
+        background: green;
+        border-radius: 47px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); }
+      .seccion-2__botones__boton__texto {
+        color: var(--blanco);
+        font-family: var(--popins);
+        font-weight: 600;
+        font-size: 14px;
+        text-transform: capitalize; }
+      .seccion-2__botones__boton__flecha {
+        transform: rotate(-90deg); }
+
+#div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 10px; }
+  #div .mascota {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px; }
+    #div .mascota:hover {
+      background-color: #73c4fa;
+      box-shadow: 0 5px 10px rgba(133, 122, 122, 0.5);
+      cursor: pointer; }
+    #div .mascota__nombreDueño {
+      font-size: 18px;
       font-weight: 600;
-      font-size: 14px;
-      text-transform: capitalize; }
-    .seccion-2__boton__flecha {
-      transform: rotate(-90deg); }
+      margin-bottom: 5px; }
+    #div .mascota__nombre {
+      display: flex;
+      align-items: flex-end;
+      font-size: 12px;
+      font-weight: 600;
+      gap: 10px; }
+      #div .mascota__nombre__texto {
+        font-size: 14px; }
+    #div .mascota__edad {
+      display: flex;
+      align-items: flex-end;
+      font-size: 12px;
+      font-weight: 600;
+      gap: 10px; }
+      #div .mascota__edad__texto {
+        font-size: 14px; }
+    #div .mascota__peso {
+      display: flex;
+      align-items: flex-end;
+      font-size: 12px;
+      font-weight: 600;
+      gap: 10px; }
+      #div .mascota__peso__texto {
+        font-size: 14px; }
+    #div .mascota__tamaño {
+      display: flex;
+      align-items: flex-end;
+      font-size: 12px;
+      font-weight: 600;
+      gap: 10px; }
+      #div .mascota__tamaño__texto {
+        font-size: 14px; }
+    #div .mascota__papelera {
+      display: block;
+      margin: 10px auto auto auto;
+      background-color: red;
+      border-radius: 12px;
+      width: 30px;
+      padding: 5px; }
 
 .seccion-3 {
   display: flex;
@@ -8105,7 +8174,6 @@ a {
     font-weight: 800; }
   .seccion-4__flex {
     display: flex;
-    flex-wrap: wrap;
     gap: 80px;
     justify-content: center; }
     .seccion-4__flex__grid {
@@ -8269,7 +8337,7 @@ a {
   .seccion-6__formulario {
     width: 600px;
     padding: 20px;
-    background-color: #ffffff1a;
+    background-color: white;
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
@@ -8284,7 +8352,7 @@ a {
       .seccion-6__formulario__contenedor__campo__nombre, .seccion-6__formulario__contenedor__campo__servicio, .seccion-6__formulario__contenedor__campo__correo, .seccion-6__formulario__contenedor__campo__mensaje {
         width: 100%;
         height: 100%;
-        border: 1px solid white;
+        border: 1px solid var(--naranja);
         background-color: #ffffff00;
         font-size: 14px;
         color: black;

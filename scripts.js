@@ -1,7 +1,8 @@
 class Mascota {
 
-    constructor(nombre, tamaño, peso, edad) {
+    constructor(nombreDueño, nombre, tamaño, peso, edad) {
 
+        this.nombreDueño = nombreDueño;
         this.nombre = nombre;
         this.tamaño = tamaño;
         this.peso = parseFloat(peso);
@@ -167,265 +168,373 @@ class Mascota {
 
 }
 
-alert("Bienvenido a nuestra clinica veterinaria, te daremos la información que necesites! \n\nIngresa a continuacion los datos solicitados, por favor.")
+var nombreValor;
+var nombreMValor;
+var edadValor;
+var pesoValor;
+var tamañoValor;
 
-var cantidadMascotas = Cantidad();
 
 var mascotas = [];
 
-for (let i = 0; i < cantidadMascotas; i++) {
+var mascota = new Mascota;
 
-    var nombre = prompt("Nombre: ");
+var nombre = document.getElementById('nombreDueño');
+var nombreM = document.getElementById('nombreMascota');
+var edad = document.getElementById('edadMascota');
+var peso = document.getElementById('pesoMascota');
+var tamaño = document.getElementById('tamañoMascota');
 
-    var tamaño = Tamaño();
+var btnAgregar = document.getElementById('btn-Agregar');
+var btnEliminar = document.getElementsByClassName('btn-Eliminar');
+var btnReiniciar = document.getElementById('btn-Reiniciar');
 
-    var peso = Peso();
+var nombre = document.getElementById('nombreDueño');
+var cantidad = document.getElementById('cantidadMascota');
 
-    var edad = Edad();
+nombre.onchange = () => {
+    nombreValor = nombre.value;
+};
 
-    mascotas.push(new Mascota(nombre, tamaño, peso, edad));
+nombreM.onchange = () => {
+    nombreMValor = nombreM.value;
+};
 
-}
+edad.onchange = () => {
+    edadValor = edad.value;
+};
 
-do {
+peso.onchange = () => {
+    pesoValor = peso.value;
+};
 
-    var mascotaSeleccionada = MascotaSeleccionada();
+tamaño.onchange = () => {
+    tamañoValor = tamaño.value;
+};
 
-    do {
+btnAgregar.addEventListener('click', () => {
 
-        var salir = false;
-        var atras = false;
+    if (!!nombreValor && !!nombreMValor && !!edadValor && !!pesoValor && !!tamañoValor) {
 
-        var i = parseInt(prompt("Muy bien!, ahora, Que desea saber sobre " + mascotas[mascotaSeleccionada].nombre + "?\n\n1 - ¿El peso de " + mascotas[mascotaSeleccionada].nombre + " esta bien?\n2 - ¿Qué edad humana tiene " + mascotas[mascotaSeleccionada].nombre + "?\n\n3 - Cambiar Tamaño\n4 - cambiar Peso\n5 - Cambiar Edad\n\n6 - Ordenar por Edad\n7 - Ordenar por Peso\n\n8 - Cambiar Mascota \n\n9 - Salir."));
+        crearMascota();
 
-        if (i <= 0 || i > 9 || isNaN(i)) {
+    } else {
 
-            alert("Ingrese un valor indicado, vuelva a intentarlo");
+        alert("rellena todos los campos por favor");
 
-        }
+        return;
+    }
 
+    document.getElementById('div').innerHTML = '';
 
+    for (let i = 0; i < mascotas.length; i++) {
 
-        switch (i) {
-            case 1:
+        var nombreDueñoHTML = document.createElement('h3');
+        nombreDueñoHTML.className = "mascota__nombreDueño";
+        nombreDueñoHTML.innerHTML = `${mascotas[i].nombreDueño}`;
 
-                mascotas[mascotaSeleccionada].calcularPeso();
+        var nombreMHTML = document.createElement('h4');
+        nombreMHTML.className = "mascota__nombre";
+        nombreMHTML.innerHTML = `Mascota: <p class="mascota__nombre__texto">${mascotas[i].nombre}</p>`;
 
-                break;
-            case 2:
+        var edadHTML = document.createElement('h4');
+        edadHTML.className = "mascota__edad";
+        edadHTML.innerHTML = `Edad: <p class="mascota__edad__texto">${mascotas[i].edad}</p>`;
 
-                mascotas[mascotaSeleccionada].calcularEdad();
+        var pesoHTML = document.createElement('h4');
+        pesoHTML.className = "mascota__peso";
+        pesoHTML.innerHTML = `Peso: <p class="mascota__peso__texto">${mascotas[i].peso}</p>`;
 
-                break;
+        var tamañoHTML = document.createElement('h4');
+        tamañoHTML.className = "mascota__tamaño";
+        tamañoHTML.innerHTML = `Tamaño: <p class="mascota__tamaño__texto">${mascotas[i].tamaño}</p>`;
 
-            case 3:
+        var divHTML = document.createElement('div');
+        divHTML.className = "mascota";
 
-                mascotas[mascotaSeleccionada].cambiarTamaño(Tamaño());
+        divHTML.appendChild(nombreDueñoHTML);
+        divHTML.appendChild(nombreMHTML);
+        divHTML.appendChild(edadHTML);
+        divHTML.appendChild(pesoHTML);
+        divHTML.appendChild(tamañoHTML);
 
-                break;
-
-            case 4:
-
-                mascotas[mascotaSeleccionada].cambiarPeso(Peso());
-
-                break;
-
-            case 5:
-
-                mascotas[mascotaSeleccionada].cambiarEdad(Edad());
-
-                break;
-
-            case 6:
-
-                mascotas.sort(OrdenarEdad);
-
-                var texto = "El orden por edad de sus mascotas es este:\n";
-
-                for (let i = 1; i <= mascotas.length; i++) {
-
-                    texto = texto.concat("\n" + i + ") " + mascotas[i - 1].nombre + " (" + mascotas[i - 1].edad + " año/s)");
-            
-                }
-
-                alert(texto);
-
-                break;
-
-            case 7:
-
-                mascotas.sort(OrdenarPeso);
-
-                var texto = "El orden por peso de sus mascotas es este:\n";
-
-                for (let i = 1; i <= mascotas.length; i++) {
-
-                    texto = texto.concat("\n" + i + ") " + mascotas[i - 1].nombre + " (" + mascotas[i - 1].peso + " Kg)");
-            
-                }
-
-                alert(texto);
-
-                break;
-
-            case 8:
-
-                atras = true;
-
-                break;
-
-            case 9:
-
-                salir = true;
-
-                break;
-
-        }
-
-    } while (atras === false && salir === false);
-
-} while (salir === false);
-
-alert("Gracias por Visitarnos!");
-
-function Cantidad() {
-
-    do {
-
-        var cantidad = parseInt(prompt("Cuantas mascotas tienes?"));
-
-        if (cantidad < 0 || isNaN(cantidad)) {
-
-            alert("Ingrese un numero valido, por favor");
-
-        } else if (cantidad === 0) {
-
-            alert("¿Entonces que haces aqui?");
-
-        }
-
-    } while (cantidad < 0 || isNaN(cantidad));
-
-    return cantidad;
-
-}
-
-function Tamaño() {
-
-    do {
-
-        var opcionTamaño = parseInt(prompt("Tamaño: \n\n1 - Pequeño\n2 - mediano \n3 - Grande"));
-
-        if (opcionTamaño <= 0 || opcionTamaño > 3 || isNaN(opcionTamaño)) {
-
-            alert("Ingrese un valor indicado, vuelva a intentarlo");
-
-        }
-
-        switch (opcionTamaño) {
-            case 1:
-
-                var tamaño = "pequeño";
-
-                break;
-            case 2:
-
-                var tamaño = "mediano";
-
-                break;
-            case 3:
-
-                var tamaño = "grande";
-
-                break;
-
-        }
-
-
-    } while (opcionTamaño <= 0 || opcionTamaño > 3 || isNaN(opcionTamaño));
-
-    return tamaño;
-
-}
-
-function Peso() {
-
-    do {
-
-        var peso = prompt("Peso: ");
-
-        if (peso <= 0 || isNaN(peso)) {
-
-            alert("Ingrese un valor real, vuelva a intentarlo");
-
-        }
-
-    } while (peso <= 0 || isNaN(peso));
-
-    return peso;
-
-}
-
-function Edad() {
-
-    do {
-
-        var edad = prompt("Edad: ");
-
-        if (edad <= 0 || isNaN(edad)) {
-
-            alert("Ingrese un valor real, vuelva a intentarlo");
-
-        }
-
-    } while (edad <= 0 || isNaN(edad));
-
-    return edad;
-
-}
-
-function MascotaSeleccionada() {
-
-    var texto = "Muy bien!, ahora, sobre cual de tus mascotas quieres saber información?\n";
-
-    for (let i = 1; i <= mascotas.length; i++) {
-
-        texto = texto.concat("\n" + i + " - " + mascotas[i - 1].nombre);
+        document.getElementById('div').appendChild(divHTML);
 
     }
 
-    do {
 
-        var seleccion = parseInt(prompt(texto));
+})
 
-        if (seleccion <= 0 || seleccion > mascotas.length || isNaN(seleccion)) {
-            alert("Ingrese un valor real, vuelva a intentarlo");
-        }
+btnReiniciar.addEventListener('click', () => {
 
-    } while (seleccion <= 0 || seleccion > mascotas.length || isNaN(seleccion));
+    document.getElementById('div').innerHTML = '';
 
-    return seleccion - 1;
+    for (let i = mascotas.length; i > 0; i--) {
+        mascotas.pop();
+      }
+      
+})
+
+function crearMascota() {
+
+    mascotas.push(new Mascota(nombreValor, nombreMValor, tamañoValor, pesoValor, edadValor));
+
+    vaciarCampos();
 
 }
 
-function OrdenarEdad(a, b) {
+function vaciarCampos() {
 
-    if (a.edad > b.edad) {
-        return 1;
-    }
-    if (a.edad < b.edad) {
-        return -1;
-    }
-    return 0;
+    document.getElementById('nombreDueño').value = '';
+    document.getElementById('nombreMascota').value = '';
+    document.getElementById('edadMascota').value = '';
+    document.getElementById('pesoMascota').value = '';
+    document.getElementById('tamañoMascota').value = '';
+
+    nombreValor = '';
+    nombreMValor = '';
+    edadValor = '';
+    pesoValor = '';
+    tamañoValor = '';
+
 }
 
-function OrdenarPeso(a, b) {
+// function mostrarDatos(nombreValor,nombreMValor,edadValor,pesoValor,tamañoValor) {
 
-    if (a.peso > b.peso) {
-        return 1;
-    }
-    if (a.peso < b.peso) {
-        return -1;
-    }
-    return 0;
-}
+
+
+// }
+
+
+
+// cantidad.onchange = () => {
+
+//     var nombreMascotaHTML = document.createElement('h4');
+//     nombreMascotaHTML.innerHTML= 'Nombre: ' + nombreM.value;
+
+
+//     var plantillaMascota = document.createElement("div");
+//     plantillaMascota.innerHTML = "";
+
+//     document.getElementById('S2-Grid').appendChild(plantillaMascota);
+
+// }
+// do {
+
+//     var mascotaSeleccionada = MascotaSeleccionada();
+
+//     do {
+
+//         var salir = false;
+//         var atras = false;
+
+//         var i = parseInt(prompt("Muy bien!, ahora, Que desea saber sobre " + mascotas[mascotaSeleccionada].nombre + "?\n\n1 - ¿El peso de " + mascotas[mascotaSeleccionada].nombre + " esta bien?\n2 - ¿Qué edad humana tiene " + mascotas[mascotaSeleccionada].nombre + "?\n\n3 - Cambiar Tamaño\n4 - cambiar Peso\n5 - Cambiar Edad\n\n6 - Ordenar por Edad\n7 - Ordenar por Peso\n\n8 - Cambiar Mascota \n\n9 - Salir."));
+
+//         if (i <= 0 || i > 9 || isNaN(i)) {
+
+//             alert("Ingrese un valor indicado, vuelva a intentarlo");
+
+//         }
+
+
+
+//         switch (i) {
+//             case 1:
+
+//                 mascotas[mascotaSeleccionada].calcularPeso();
+
+//                 break;
+//             case 2:
+
+//                 mascotas[mascotaSeleccionada].calcularEdad();
+
+//                 break;
+
+//             case 3:
+
+//                 mascotas[mascotaSeleccionada].cambiarTamaño(Tamaño());
+
+//                 break;
+
+//             case 4:
+
+//                 mascotas[mascotaSeleccionada].cambiarPeso(Peso());
+
+//                 break;
+
+//             case 5:
+
+//                 mascotas[mascotaSeleccionada].cambiarEdad(Edad());
+
+//                 break;
+
+//             case 6:
+
+//                 mascotas.sort(OrdenarEdad);
+
+//                 var texto = "El orden por edad de sus mascotas es este:\n";
+
+//                 for (let i = 1; i <= mascotas.length; i++) {
+
+//                     texto = texto.concat("\n" + i + ") " + mascotas[i - 1].nombre + " (" + mascotas[i - 1].edad + " año/s)");
+
+//                 }
+
+//                 alert(texto);
+
+//                 break;
+
+//             case 7:
+
+//                 mascotas.sort(OrdenarPeso);
+
+//                 var texto = "El orden por peso de sus mascotas es este:\n";
+
+//                 for (let i = 1; i <= mascotas.length; i++) {
+
+//                     texto = texto.concat("\n" + i + ") " + mascotas[i - 1].nombre + " (" + mascotas[i - 1].peso + " Kg)");
+
+//                 }
+
+//                 alert(texto);
+
+//                 break;
+
+//             case 8:
+
+//                 atras = true;
+
+//                 break;
+
+//             case 9:
+
+//                 salir = true;
+
+//                 break;
+
+//         }
+
+//     } while (atras === false && salir === false);
+
+// } while (salir === false);
+
+
+// function Tamaño() {
+
+//     do {
+
+//         var opcionTamaño = parseInt(prompt("Tamaño: \n\n1 - Pequeño\n2 - mediano \n3 - Grande"));
+
+//         if (opcionTamaño <= 0 || opcionTamaño > 3 || isNaN(opcionTamaño)) {
+
+//             alert("Ingrese un valor indicado, vuelva a intentarlo");
+
+//         }
+
+//         switch (opcionTamaño) {
+//             case 1:
+
+//                 var tamaño = "pequeño";
+
+//                 break;
+//             case 2:
+
+//                 var tamaño = "mediano";
+
+//                 break;
+//             case 3:
+
+//                 var tamaño = "grande";
+
+//                 break;
+
+//         }
+
+
+//     } while (opcionTamaño <= 0 || opcionTamaño > 3 || isNaN(opcionTamaño));
+
+//     return tamaño;
+
+// }
+
+// function Peso() {
+
+//     do {
+
+//         var peso = prompt("Peso: ");
+
+//         if (peso <= 0 || isNaN(peso)) {
+
+//             alert("Ingrese un valor real, vuelva a intentarlo");
+
+//         }
+
+//     } while (peso <= 0 || isNaN(peso));
+
+//     return peso;
+
+// }
+
+// function Edad() {
+
+//     do {
+
+//         var edad = prompt("Edad: ");
+
+//         if (edad <= 0 || isNaN(edad)) {
+
+//             alert("Ingrese un valor real, vuelva a intentarlo");
+
+//         }
+
+//     } while (edad <= 0 || isNaN(edad));
+
+//     return edad;
+
+// }
+
+// function MascotaSeleccionada() {
+
+//     var texto = "Muy bien!, ahora, sobre cual de tus mascotas quieres saber información?\n";
+
+//     for (let i = 1; i <= mascotas.length; i++) {
+
+//         texto = texto.concat("\n" + i + " - " + mascotas[i - 1].nombre);
+
+//     }
+
+//     do {
+
+//         var seleccion = parseInt(prompt(texto));
+
+//         if (seleccion <= 0 || seleccion > mascotas.length || isNaN(seleccion)) {
+//             alert("Ingrese un valor real, vuelva a intentarlo");
+//         }
+
+//     } while (seleccion <= 0 || seleccion > mascotas.length || isNaN(seleccion));
+
+//     return seleccion - 1;
+
+// }
+
+// function OrdenarEdad(a, b) {
+
+//     if (a.edad > b.edad) {
+//         return 1;
+//     }
+//     if (a.edad < b.edad) {
+//         return -1;
+//     }
+//     return 0;
+// }
+
+// function OrdenarPeso(a, b) {
+
+//     if (a.peso > b.peso) {
+//         return 1;
+//     }
+//     if (a.peso < b.peso) {
+//         return -1;
+//     }
+//     return 0;
+// }
